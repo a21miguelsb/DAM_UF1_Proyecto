@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewRoutineExerciceFragment"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/routine_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:textStyle="bold|italic"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+
+                >
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ejericico"
+                    android:textSize="20dp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_repetitions"
+                    android:textSize="15dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/cronometro"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_exercices1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                android:layout_gravity="bottom"
+                >
+
+                <EditText
+                    android:id="@+id/exercice_name1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="24"
+                    />
+
+                <EditText
+                    android:id="@+id/exercice_reps1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="2"
+                    android:inputType="number"
+
+                    />
+                <EditText
+                    android:id="@+id/exercice_time1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:layout_marginLeft="20dp"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_exercices2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                >
+
+                <EditText
+                    android:id="@+id/exercice_name2"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="24"
+                    />
+
+                <EditText
+                    android:id="@+id/exercice_reps2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+
+                    />
+                <EditText
+                    android:id="@+id/exercice_time2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:layout_marginLeft="20dp"
+
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_exercices3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                >
+
+                <EditText
+                    android:id="@+id/exercice_name3"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="24"
+
+                    />
+
+                <EditText
+                    android:id="@+id/exercice_reps3"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+
+                    />
+                <EditText
+                    android:id="@+id/exercice_time3"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:layout_marginLeft="20dp"
+
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_exercices4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                >
+
+                <EditText
+                    android:id="@+id/exercice_name4"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="24"
+
+                    />
+
+                <EditText
+                    android:id="@+id/exercice_reps4"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+
+                    />
+                <EditText
+                    android:id="@+id/exercice_time4"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:layout_marginLeft="20dp"
+
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_exercices5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                >
+
+                <EditText
+                    android:id="@+id/exercice_name5"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="24"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:id="@+id/exercice_reps5"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="2"
+
+                    />
+                <EditText
+                    android:id="@+id/exercice_time5"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:layout_marginLeft="20dp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                >
+
+                <Button
+                    android:id="@+id/addRoutine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Añadir"
+                    android:layout_marginRight="20dp"
+                    >
+
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

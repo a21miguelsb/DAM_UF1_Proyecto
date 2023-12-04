@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/routineFragment"
+        android:icon="@drawable/rutina"
+        android:title="Rutinas"
+
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/objectiveFragment"
+        android:icon="@drawable/goals"
+        android:title="Objetivos"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/dietFragment"
+        android:icon="@drawable/diet"
+        android:title="Dietas"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/userFragment"
+
+        android:icon="@drawable/user"
+        android:title="Usuario"
+        app:showAsAction="always" />
+
+</menu>

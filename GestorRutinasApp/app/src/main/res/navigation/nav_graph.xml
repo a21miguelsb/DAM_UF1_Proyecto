@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/objectiveFragment">
+
+    <fragment
+        android:id="@+id/dietFragment"
+        android:name="com.example.gestorrutinasapp.DietFragment"
+        android:label="fragment_diet"
+        tools:layout="@layout/fragment_diet" >
+        <action
+            android:id="@+id/action_dietFragment_to_newDietFragment"
+            app:destination="@id/newDietFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/routineFragment"
+        android:name="com.example.gestorrutinasapp.RoutineFragment"
+        android:label="fragment_routine"
+        tools:layout="@layout/fragment_routine" >
+        <action
+            android:id="@+id/action_routineFragment_to_newRoutineFragment"
+            app:destination="@id/newRoutineFragment" />
+        <action
+            android:id="@+id/action_routineFragment_to_routineInfoFragment"
+            app:destination="@id/routineInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/objectiveFragment"
+        android:name="com.example.gestorrutinasapp.ObjetivesFragment"
+        android:label="ObjetivesFragment" >
+        <action
+            android:id="@+id/action_objectiveFragment_to_newObjetiveFragment"
+            app:destination="@id/newObjetiveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newObjetiveFragment"
+        android:name="com.example.gestorrutinasapp.NewObjetiveFragment"
+        android:label="fragment_new_objetive"
+        tools:layout="@layout/fragment_new_objetive" >
+        <action
+            android:id="@+id/action_newObjetiveFragment_to_objectiveFragment"
+            app:destination="@id/objectiveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newRoutineFragment"
+        android:name="com.example.gestorrutinasapp.NewRoutineFragment"
+        android:label="NewRoutineFragment" >
+        <action
+            android:id="@+id/action_newRoutineFragment_to_newRoutineExerciceFragment"
+            app:destination="@id/newRoutineExerciceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newRoutineExerciceFragment"
+        android:name="com.example.gestorrutinasapp.NewRoutineExerciceFragment"
+        android:label="fragment_new_routine_exercice"
+        tools:layout="@layout/fragment_new_routine_exercice" >
+        <action
+            android:id="@+id/action_newRoutineExerciceFragment_to_routineFragment"
+            app:destination="@id/routineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/routineInfoFragment"
+        android:name="com.example.gestorrutinasapp.RoutineInfoFragment"
+        android:label="fragment_routine_info"
+        tools:layout="@layout/fragment_routine_info" />
+    <fragment
+        android:id="@+id/newDietFragment"
+        android:name="com.example.gestorrutinasapp.NewDietFragment"
+        android:label="fragment_new_diet"
+        tools:layout="@layout/fragment_new_diet" >
+        <action
+            android:id="@+id/action_newDietFragment_to_dietFragment"
+            app:destination="@id/dietFragment" />
+    </fragment>
+</navigation>
