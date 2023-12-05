@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.gestorrutinasapp.databinding.FragmentNewRoutineExerciceBinding
@@ -20,8 +21,6 @@ class NewRoutineExerciceFragment : Fragment() {
         ownerProducer = {this.requireActivity()}
     )
     private val binding get()= _binding!!
-    private lateinit var adapter: ArrayAdapter<String>
-    private val itemList = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,7 +82,22 @@ class NewRoutineExerciceFragment : Fragment() {
         return view
     }
 
+    private fun cargarMiFragmento() {
+        val miFragmento = RoutineFragment()
 
+        // Obtén el FragmentManager y comienza una transacción
+        val fragmentManager = activity?.supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+
+        // Reemplaza el contenido actual en el contenedor con el nuevo fragmento
+        fragmentTransaction.replace(R.id.routineFragment, miFragmento)
+
+        // Añade la transacción al back stack
+        fragmentTransaction.addToBackStack(null)
+
+        // Realiza la transacción
+        fragmentTransaction.commit()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding=null

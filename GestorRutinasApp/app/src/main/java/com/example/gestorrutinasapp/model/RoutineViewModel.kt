@@ -20,35 +20,29 @@ class RoutineViewModel(
 ) : ViewModel() {
 
     lateinit var  dayRoutine: Days
-    lateinit var rutina:Rutina
-    var allRoutines: List<Rutina> = emptyList()
     private val _rutinas = MutableLiveData<List<Rutina>>(emptyList())
+    lateinit var rutina:Rutina
+    lateinit var selectedRoutine:Rutina
     val rutinas:LiveData<List<Rutina>> = _rutinas
 
-    init{
-            getRutinas()
-
-    }
-/**
-    private fun getRutinas() {
-        var r = mutableListOf<Rutina>()
-          routineDao.getAllRoutines().collect{
-              list->r.addAll(list)
-          }
-        allRoutines = r
-    }
 
 
-*/
 
-private fun getRutinas() {
+
+fun getRutinas() {
 viewModelScope.launch {
     _rutinas.value= routineDao.getAllRoutines()
     Log.d("Rutinas",rutinas.value.toString())
 }
 
-}
 
+
+}
+    fun getRoutineByName(){
+        viewModelScope.launch {
+            selectedRoutine= routineDao.getRutinaByName(rutina.name)
+        }
+    }
     fun setDay(day: Int):Days{
         when(day){
             0->dayRoutine= Days.LUNES
@@ -78,12 +72,13 @@ viewModelScope.launch {
     fun addNewRoutine(routineName: String, dayRoutine: Int) {
         val newRoutine = getNewItemEntry(routineName, dayRoutine)
         insertRutina(newRoutine)
-        rutina = newRoutine
     }
 
     fun addNewExercice(name:String,reps: Int,time: Int) {
-        val newRoutine = Exercice(name =name, repetitions =reps,time= time, id_routine =  rutina.id)
+        val newRoutine = Exercice(name =name, repetitions =reps,time= time, id_routine =  0  )
         insertExercices(newRoutine)
+        getRoutineByName()
+        Log.d("Rutina",rutina.toString())
     }
 
 
@@ -108,8 +103,8 @@ class RoutineViewModelFactory(private val routineDao: RoutineDao,private val exe
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RoutineViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return RoutineViewModel(routineDao,exerciceDao) as T
+            return RoutineViewModel(routineDao, exerciceDao) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class")    }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }
-

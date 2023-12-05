@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".RoutineInfoFragment">
+    tools:context=".RoutineInfoFragment"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/nav_graph">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_repetitions"
-                android:textSize="15dp"
+                android:textSize="20sp"
 
                 />
 

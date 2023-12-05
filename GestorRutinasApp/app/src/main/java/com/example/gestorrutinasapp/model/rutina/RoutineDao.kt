@@ -10,8 +10,8 @@ interface RoutineDao {
     @Query("SELECT * FROM Rutina")
     suspend fun getAllRoutines(): List<Rutina>
 
-    @Query("SELECT * FROM Rutina Where name= :name and day = :day ")
-    suspend fun getRutinaByNameDay(name: String,day: Days):Rutina
+    @Query("SELECT * FROM Rutina Where name= :name ")
+    suspend fun getRutinaByName(name: String):Rutina
 
     @Insert
     suspend fun insert(rutina: Rutina)
