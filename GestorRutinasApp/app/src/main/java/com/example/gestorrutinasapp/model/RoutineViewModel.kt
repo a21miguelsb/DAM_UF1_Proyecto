@@ -1,18 +1,16 @@
 package com.example.gestorrutinasapp.model
 
 import android.text.Editable
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.gestorrutinasapp.model.exercice.Exercice
 import com.example.gestorrutinasapp.model.exercice.ExerciceDao
 import com.example.gestorrutinasapp.model.rutina.RoutineDao
 import com.example.gestorrutinasapp.model.rutina.Rutina
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 
 
@@ -23,17 +21,33 @@ class RoutineViewModel(
 
     lateinit var  dayRoutine: Days
     lateinit var rutina:Rutina
+    var allRoutines: List<Rutina> = emptyList()
+    private val _rutinas = MutableLiveData<List<Rutina>>(emptyList())
+    val rutinas:LiveData<List<Rutina>> = _rutinas
 
-    var allRoutines = getRutinas()
-    private suspend fun getRutinas(): List<Rutina> {
-        var rutinas: MutableList<Rutina> = ArrayList()
+    init{
+            getRutinas()
 
-
-        return   routineDao.getAllRoutines().toList(rutinas)
+    }
+/**
+    private fun getRutinas() {
+        var r = mutableListOf<Rutina>()
+          routineDao.getAllRoutines().collect{
+              list->r.addAll(list)
+          }
+        allRoutines = r
     }
 
 
+*/
 
+private fun getRutinas() {
+viewModelScope.launch {
+    _rutinas.value= routineDao.getAllRoutines()
+    Log.d("Rutinas",rutinas.value.toString())
+}
+
+}
 
     fun setDay(day: Int):Days{
         when(day){

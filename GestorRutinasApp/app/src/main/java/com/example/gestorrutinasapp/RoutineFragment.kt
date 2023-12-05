@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestorrutinasapp.databinding.FragmentRoutineBinding
 import com.example.gestorrutinasapp.model.RoutineViewModel
 import com.example.gestorrutinasapp.model.RoutineViewModelFactory
 import com.example.gestorrutinasapp.model.rutina.Rutina
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.toList
 
 class RoutineFragment : Fragment() {
     private var _binding: FragmentRoutineBinding? = null
@@ -34,36 +32,36 @@ class RoutineFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
         _binding= FragmentRoutineBinding.inflate(inflater,container,false)
         val view = binding.root
-        // Inflate the layout for this fragment
-        var lista = binding.listaRutinas
+        var listaRutinas: List<Rutina> = emptyList()
+        val adapter = RoutineAdapter(listaRutinas)
+        adapter.notifyDataSetChanged()
+        adapter.notifyItemChanged(listaRutinas.size-1)
+        model.rutinas.observe(viewLifecycleOwner) {
+            listaRutinas = it
 
-            adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemList)
-            lista.adapter = adapter
+        }
 
-        if(model.allRoutines.isNotEmpty()){
-            adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemList)
 
-            lista.adapter = adapter
 
-            for (rutina in model.allRoutines) {
+            val recyclerVIew =  binding.rvRoutines
+            recyclerVIew.adapter = adapter
+            recyclerVIew.layoutManager = LinearLayoutManager(requireContext())
+
+            for (rutina in listaRutinas) {
                 if (!itemList.contains(rutina.name)) itemList.add(rutina.name)
             }
 
-            lista.setOnItemClickListener { _, _, position, _ ->
                 //model.routineInfo= model.listaRutinas.get(position)
 
                 view.findNavController()
                     .navigate(R.id.action_routineFragment_to_routineInfoFragment)
 
 
-            }
 
-        }
+
+
 
 
 
