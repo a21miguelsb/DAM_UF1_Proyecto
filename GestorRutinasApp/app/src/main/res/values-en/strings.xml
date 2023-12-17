@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flexify</string>
+    <string name="add_btn">Add</string>
+    <string name="exercice_name">Exerice</string>
+    <string name="exercice_reps">Reps</string>
+    <string name="exercice_duration">Time</string>
+    <string name="your_objetives">Your objetives</string>
+    <string name="your_routines">Your routines</string>
+    <string name="dietas_txt">Your diets</string>
+    <string name="btn_next">Next</string>
+    <string name="routine_name">Name</string>
+    <string name="objetive_description">Description:</string>
+    <string name="btn_eliminar">Delete</string>
+    <string name="nueva_dieta_txt">New Diet</string>
+    <string name="meta_objetivo_txt">Goal:</string>
+    <string name="dia_text">Day</string>
+    <string name="objetivo_cumplido_text">Achieved</string>
+    <string name="objetivo_text">Objetive</string>
+    <string name="rutina_text">Routine</string>
+
+    <string-array name="lista_dias">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+</resources>
