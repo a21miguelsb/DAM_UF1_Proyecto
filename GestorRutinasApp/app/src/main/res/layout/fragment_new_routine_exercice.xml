@@ -31,26 +31,30 @@
                 android:layout_margin="20dp"
 
                 >
+
                 <TextView
-                    android:layout_width="250dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    android:text="Ejericico"
-                    android:textSize="20dp"
+                    android:text="@string/exercice_name"
+                    android:textSize="20sp"
 
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/txt_repetitions"
-                    android:textSize="15dp"
+                    android:text="Nº veces"
+                    android:textSize="15sp"
 
                     />
 
-                <ImageView
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:src="@drawable/cronometro"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercice_reps"
+
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
                     />
             </LinearLayout>
 
@@ -65,11 +69,10 @@
 
                 <EditText
                     android:id="@+id/exercice_name1"
-                    android:layout_width="250dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
                     android:maxLength="24"
-                    />
+                    android:maxLines="1" />
 
                 <EditText
                     android:id="@+id/exercice_reps1"
@@ -78,6 +81,7 @@
                     android:maxLines="1"
                     android:maxLength="2"
                     android:inputType="number"
+                    android:layout_marginStart="5sp"
 
                     />
                 <EditText
@@ -87,7 +91,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
 
                     />
 
@@ -103,7 +107,7 @@
 
                 <EditText
                     android:id="@+id/exercice_name2"
-                    android:layout_width="250dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:maxLength="24"
@@ -116,6 +120,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:layout_marginStart="5sp"
 
                     />
                 <EditText
@@ -125,7 +130,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
 
                     />
 
@@ -140,7 +145,7 @@
 
                 <EditText
                     android:id="@+id/exercice_name3"
-                    android:layout_width="250dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:maxLength="24"
@@ -154,6 +159,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:layout_marginStart="5sp"
 
                     />
                 <EditText
@@ -163,7 +169,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
 
                     />
 
@@ -178,7 +184,7 @@
 
                 <EditText
                     android:id="@+id/exercice_name4"
-                    android:layout_width="250dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:maxLength="24"
@@ -192,6 +198,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:layout_marginStart="5sp"
 
                     />
                 <EditText
@@ -216,7 +223,7 @@
 
                 <EditText
                     android:id="@+id/exercice_name5"
-                    android:layout_width="250dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:maxLength="24"
@@ -230,6 +237,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="2"
+                    android:layout_marginStart="5sp"
 
                     />
                 <EditText
@@ -239,7 +247,7 @@
                     android:maxLines="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
 
                     />
 
@@ -257,8 +265,8 @@
                     android:id="@+id/addRoutine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Añadir"
-                    android:layout_marginRight="20dp"
+                    android:text="@string/add_btn"
+                    android:layout_marginEnd="20dp"
                     >
 
                 </Button>

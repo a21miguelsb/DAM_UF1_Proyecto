@@ -8,15 +8,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.example.gestorrutinasapp.databinding.FragmentNewDietBinding
+import com.example.gestorrutinasapp.databinding.FragmentDietInfoBinding
 import com.example.gestorrutinasapp.model.DietViewModel
 import com.example.gestorrutinasapp.model.DietViewModelFactory
-import com.example.gestorrutinasapp.model.dieta.Dieta
 
 
-class NewDietFragment : Fragment() {
+class DietInfoFragment : Fragment() {
 
-    var _binding: FragmentNewDietBinding?=null
+
+    private var _binding: FragmentDietInfoBinding? = null
+
     private val binding get()= _binding!!
     val model: DietViewModel by  activityViewModels {
         DietViewModelFactory(
@@ -24,28 +25,23 @@ class NewDietFragment : Fragment() {
                 .getDietDao())
 
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= FragmentNewDietBinding.inflate(inflater, container, false)
 
-        // Inflate the layout for this fragment
+        _binding = FragmentDietInfoBinding.inflate(inflater,container,false)
         val view = binding.root
-
-        val btnAdd = binding.btnAdd
-
-        btnAdd.setOnClickListener {
-            Toast.makeText(requireContext(),"Nueva dieta creada.", Toast.LENGTH_SHORT).show()
-            model.dieta =Dieta(name = binding.dietName.text.toString(), diet_info = binding.dietDescription.text.toString())
-
-            model.insertarDieta(model.dieta)
-            view.findNavController().navigate(R.id.action_newDietFragment_to_dietFragment)
+        val objName = binding.dietaInfoName
+        val objDescription = binding.dietaDescripcion
+        val btnCompleted = binding.btnEliminarDieta
+        objName.text = model.dieta.name
+        objDescription.text = model.dieta.diet_info
+        btnCompleted.setOnClickListener {
+            Toast.makeText(requireContext(),"Dieta eliminada correctamente.", Toast.LENGTH_SHORT).show()
+            model.deleteObjetive(model.dietaInfo)
+            view.findNavController().navigate(R.id.action_dietInfoFragment_to_dietFragment)
         }
-
-
 
 
 

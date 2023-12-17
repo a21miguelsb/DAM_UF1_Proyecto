@@ -58,12 +58,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Meta:"
+                android:text="@string/meta_objetivo_txt"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
             <EditText
-
+                android:id="@+id/objetive_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_add" />
+            android:text="@string/add_btn" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

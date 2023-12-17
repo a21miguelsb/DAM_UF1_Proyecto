@@ -1,20 +1,22 @@
 package com.example.gestorrutinasapp.model.dieta
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DietaDao {
     @Query("SELECT * FROM Dieta ORDER BY name DESC ")
-    fun getAllDiets(): Flow<List<Dieta>>
+    suspend fun getAllDiets(): List<Dieta>
 
     @Insert
-    suspend fun insert(exercice: Dieta)
+    suspend fun insert(dieta: Dieta)
+    @Delete
+    suspend fun delete(dieta: Dieta)
 
 
     @Query("SELECT * from dieta WHERE id = :id")
-    fun getDietById(id: Int): Dieta
+    suspend fun getDietById(id: Int): Dieta
 
 }

@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:maxLength="100"
+                android:maxLines="3"
 
                 />
 
@@ -58,7 +59,7 @@
                     android:id="@+id/texto_dia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dia"
+                    android:text="@string/dia_text"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
 

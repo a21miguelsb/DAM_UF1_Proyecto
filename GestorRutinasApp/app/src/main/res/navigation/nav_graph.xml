@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dietFragment_to_newDietFragment"
             app:destination="@id/newDietFragment" />
+        <action
+            android:id="@+id/action_dietFragment_to_dietInfoFragment"
+            app:destination="@id/dietInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/routineFragment"
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_objectiveFragment_to_newObjetiveFragment"
             app:destination="@id/newObjetiveFragment" />
+        <action
+            android:id="@+id/action_objectiveFragment_to_objetiveInfoFragment"
+            app:destination="@id/objetiveInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/newObjetiveFragment"
@@ -64,7 +70,11 @@
         android:id="@+id/routineInfoFragment"
         android:name="com.example.gestorrutinasapp.RoutineInfoFragment"
         android:label="fragment_routine_info"
-        tools:layout="@layout/fragment_routine_info" />
+        tools:layout="@layout/fragment_routine_info" >
+        <action
+            android:id="@+id/action_routineInfoFragment_to_routineFragment"
+            app:destination="@id/routineFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newDietFragment"
         android:name="com.example.gestorrutinasapp.NewDietFragment"
@@ -72,6 +82,24 @@
         tools:layout="@layout/fragment_new_diet" >
         <action
             android:id="@+id/action_newDietFragment_to_dietFragment"
+            app:destination="@id/dietFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/objetiveInfoFragment"
+        android:name="com.example.gestorrutinasapp.ObjetiveInfoFragment"
+        android:label="fragment_objetive_info"
+        tools:layout="@layout/fragment_objetive_info" >
+        <action
+            android:id="@+id/action_objetiveInfoFragment_to_objectiveFragment"
+            app:destination="@id/objectiveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dietInfoFragment"
+        android:name="com.example.gestorrutinasapp.DietInfoFragment"
+        android:label="fragment_diet_info"
+        tools:layout="@layout/fragment_diet_info" >
+        <action
+            android:id="@+id/action_dietInfoFragment_to_dietFragment"
             app:destination="@id/dietFragment" />
     </fragment>
 </navigation>

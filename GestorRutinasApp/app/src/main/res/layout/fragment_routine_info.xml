@@ -12,27 +12,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        >
 
         <TextView
             android:id="@+id/routine_info_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="30dp"
+            android:textSize="40sp"
             android:textStyle="bold"
 
             />
 
-        <TextView
-            android:id="@+id/routine_day_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="15dp"
-            android:textStyle="italic"
 
-            />
 
     </LinearLayout>
 
@@ -44,31 +39,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:orientation="horizontal"
+            android:layout_margin="20dp"
 
             >
 
             <TextView
-                android:layout_width="250dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:text="Ejericico"
-                android:textSize="20dp"
+                android:text="@string/exercice_name"
+                android:textSize="20sp"
 
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_repetitions"
-                android:textSize="20sp"
+                android:text="Nº veces"
+                android:textSize="15sp"
 
                 />
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:src="@drawable/cronometro" />
+                android:layout_height="wrap_content"
+                android:text="@string/exercice_reps"
+
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +98,7 @@
                 android:id="@+id/exercice_time1"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
 
 
                 />
@@ -133,7 +132,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                  />
 
         </LinearLayout>
@@ -166,7 +165,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                  />
 
         </LinearLayout>
@@ -199,7 +198,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                  />
 
         </LinearLayout>
@@ -232,7 +231,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
 
                 />
 
@@ -246,10 +245,11 @@
         android:gravity="right"
         >
         <Button
+            android:id="@+id/btn_eliminarRutina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Eliminar"
+            android:text="@string/btn_eliminar"
             >
         </Button>
     </LinearLayout>

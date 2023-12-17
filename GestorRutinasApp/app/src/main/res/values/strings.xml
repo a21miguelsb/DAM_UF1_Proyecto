@@ -9,7 +9,14 @@
     <string name="dietas_txt">Tus dietas</string>
     <string name="btn_next">Siguiente</string>
     <string name="routine_name">Nombre</string>
-
+    <string name="objetive_description">Descripción:</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="nueva_dieta_txt">Nueva Dieta</string>
+    <string name="meta_objetivo_txt">Meta:</string>
+    <string name="dia_text">Dia</string>
+    <string name="objetivo_cumplido_text">Cumplido</string>
+    <string name="objetivo_text">Objetivo</string>
+    <string name="rutina_text">Rutina</string>
 
     <string-array name="lista_dias">
         <item>Lunes</item>
@@ -20,9 +27,5 @@
         <item>Sábado</item>
         <item>Domingo</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="btn_add">Añadir</string>
-    <string name="txt_repetitions">Reps</string>
-    <string name="txt_time">Tiempo</string>
+
 </resources>

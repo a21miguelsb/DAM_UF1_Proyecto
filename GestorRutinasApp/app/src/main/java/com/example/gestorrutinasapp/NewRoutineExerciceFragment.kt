@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -12,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.gestorrutinasapp.databinding.FragmentNewRoutineExerciceBinding
 import com.example.gestorrutinasapp.model.RoutineViewModel
-import com.example.gestorrutinasapp.model.exercice.Exercice
 
 class NewRoutineExerciceFragment : Fragment() {
 
@@ -34,6 +32,7 @@ class NewRoutineExerciceFragment : Fragment() {
         btnAdd.setOnClickListener {
 
             try {
+
                 val name1 = binding.exerciceName1.text.toString()
                 val reps1 = binding.exerciceReps1.text.toString().toInt()
                 val time1 = binding.exerciceTime1.text.toString().toInt()

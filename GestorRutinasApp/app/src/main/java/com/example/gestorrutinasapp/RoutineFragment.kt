@@ -1,12 +1,10 @@
 package com.example.gestorrutinasapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,41 +22,23 @@ class RoutineFragment : Fragment() {
         RoutineViewModelFactory(
             (activity?.application as GestorRutinasApp).databaseRoutine
                 .getRoutineDao(),
-            (activity?.application as GestorRutinasApp).databaseRoutine.getExerciceDao()
+            (activity?.application as GestorRutinasApp).databaseRoutine.getExerciceDao(),
+            requireContext()
         )
-
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        model.getRutinas()
-        initRecyclerView()
-
         _binding= FragmentRoutineBinding.inflate(inflater,container,false)
         val view = binding.root
+        model.getRutinas()
+        initRecyclerView()
         val btnAdd = binding.newRoutine
         btnAdd.setOnClickListener {
-            //model.routineInfo= model.listaRutinas.get(position)
             view.findNavController()
-                .navigate(R.id.action_routineFragment_to_routineInfoFragment)
+                .navigate(R.id.action_routineFragment_to_newRoutineFragment)
         }
-
-
-
-
-
-
-
-        val btn_next = binding.newRoutine
-
-
-
-        btn_next.setOnClickListener {
-            view.findNavController().navigate(R.id.action_routineFragment_to_newRoutineFragment)
-
-        }
-
         return view
     }
     override fun onDestroyView() {
@@ -70,17 +50,12 @@ class RoutineFragment : Fragment() {
         model.rutinas.observe(viewLifecycleOwner) {
             val recyclerVIew =  binding.rvRoutines
             var listaRutinas: List<Rutina> = emptyList()
-
             listaRutinas = it
-            val adapter = RoutineAdapter(listaRutinas)
-
+            val adapter = view?.let { it1 -> RoutineAdapter(listaRutinas,model, it1,viewLifecycleOwner) }
             if (listaRutinas.isNotEmpty()){
-
                 recyclerVIew.adapter = adapter
-                Log.d("RutinasAdapter", adapter.itemCount.toString())
-
                 recyclerVIew.layoutManager = LinearLayoutManager(this.context)
-                adapter.notifyDataSetChanged()
+                adapter?.notifyDataSetChanged()
 
             }
         }

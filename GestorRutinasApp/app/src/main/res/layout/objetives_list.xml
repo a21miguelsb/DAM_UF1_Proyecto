@@ -15,16 +15,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/texto_rutinas"
+            android:id="@+id/nombre_objetivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rutina_text"
+            android:text="@string/objetivo_text"
             android:textSize="34sp" />
     </LinearLayout>
 
 
     <ImageButton
-        android:id="@+id/routine_info"
+        android:id="@+id/btnObjetive_info"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginRight="20dp"

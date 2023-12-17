@@ -1,5 +1,6 @@
 package com.example.gestorrutinasapp.model
 
+import android.content.Context
 import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,99 +12,110 @@ import com.example.gestorrutinasapp.model.exercice.Exercice
 import com.example.gestorrutinasapp.model.exercice.ExerciceDao
 import com.example.gestorrutinasapp.model.rutina.RoutineDao
 import com.example.gestorrutinasapp.model.rutina.Rutina
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
 class RoutineViewModel(
     private val routineDao: RoutineDao,
-    private val exerciceDao: ExerciceDao
+    private val exerciceDao: ExerciceDao,
+    private val context: Context
 ) : ViewModel() {
 
-    lateinit var  dayRoutine: Days
     private val _rutinas = MutableLiveData<List<Rutina>>(emptyList())
-    lateinit var rutina:Rutina
-    lateinit var selectedRoutine:Rutina
-    val rutinas:LiveData<List<Rutina>> = _rutinas
+    lateinit var rutina: Rutina
+
+    lateinit var exercicesList: List<Exercice>
 
 
+    private lateinit var insertedRoutine: Rutina
+    val rutinas: LiveData<List<Rutina>> = _rutinas
 
 
-
-fun getRutinas() {
-viewModelScope.launch {
-    _rutinas.value= routineDao.getAllRoutines()
-    Log.d("Rutinas",rutinas.value.toString())
-}
-
-
-
-}
-    fun getRoutineByName(){
+    fun getRutinas() {
         viewModelScope.launch {
-            selectedRoutine= routineDao.getRutinaByName(rutina.name)
+            _rutinas.value = routineDao.getAllRoutines()
         }
     }
-    fun setDay(day: Int):Days{
-        when(day){
-            0->dayRoutine= Days.LUNES
-            1->dayRoutine= Days.MARTES
-            2->dayRoutine= Days.MIERCOLES
-            3->dayRoutine= Days.JUEVES
-            4->dayRoutine= Days.VIERNES
-            5->dayRoutine= Days.SABADO
-            6->dayRoutine= Days.DOMINGO
+
+    fun getExerciceByRoutine(id: Int) {
+        viewModelScope.launch {
+            var lista = async { exerciceDao.getExerciceByRoutine(id) }
+            exercicesList = lista.await()
+            Log.d("Exercices View", exercicesList.toString())
         }
-        return dayRoutine
     }
-    
+
+
+    fun getRoutineByName(name: String) {
+        viewModelScope.launch {
+            var rutina = async { routineDao.getRutinaByName(name) }
+            insertedRoutine = rutina.await()
+        }
+
+    }
+
     fun isEntryValid(itemName: Editable, day: Int): Boolean {
-        if (itemName.isNotBlank() || day!=null) {
+        if (itemName.isNotBlank() || day != null) {
             return true
         }
         return false
     }
 
-    private fun getNewItemEntry(name: String, day: Int): Rutina {
+    private fun getNewItemEntry(name: String, day: Days): Rutina {
         return Rutina(
             name = name,
-            day = setDay(day),
+            day = day,
         )
     }
-    fun addNewRoutine(routineName: String, dayRoutine: Int) {
+
+    fun addNewRoutine(routineName: String, dayRoutine: Days) {
         val newRoutine = getNewItemEntry(routineName, dayRoutine)
-        insertRutina(newRoutine)
+        insertarRutina(newRoutine)
     }
 
-    fun addNewExercice(name:String,reps: Int,time: Int) {
-        val newRoutine = Exercice(name =name, repetitions =reps,time= time, id_routine =  0  )
-        insertExercices(newRoutine)
-        getRoutineByName()
-        Log.d("Rutina",rutina.toString())
+    fun addNewExercice(name: String, reps: Int, time: Int) {
+        val newExercice =
+            Exercice(name = name, repetitions = reps, time = time, id_routine = insertedRoutine.id)
+        insertExercices(newExercice)
     }
 
 
-
-
-    private fun insertExercices(exercice: Exercice){
+    private fun insertExercices(exercice: Exercice) {
         viewModelScope.launch {
             exerciceDao.insert(exercice)
         }
 
     }
 
-    private fun insertRutina(routine: Rutina){
+    fun insertarRutina(routine: Rutina) {
         viewModelScope.launch {
             routineDao.insert(routine)
+
         }
     }
 
+    fun deleteRoutine(rutina: Rutina) {
+        viewModelScope.launch {
+            routineDao.delete(rutina)
+        }
+
+    }
+
+    fun deleteExercice(exercice: Exercice) {
+        viewModelScope.launch {
+            exerciceDao.delete(exercice)
+        }
+
+
+    }
 }
 
-class RoutineViewModelFactory(private val routineDao: RoutineDao,private val exerciceDao: ExerciceDao) : ViewModelProvider.Factory {
+class RoutineViewModelFactory(private val routineDao: RoutineDao,private val exerciceDao: ExerciceDao,private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RoutineViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return RoutineViewModel(routineDao, exerciceDao) as T
+            return RoutineViewModel(routineDao, exerciceDao,context) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
